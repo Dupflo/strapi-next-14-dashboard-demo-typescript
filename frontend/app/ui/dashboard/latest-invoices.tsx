@@ -1,11 +1,11 @@
-import { ArrowPathIcon } from '@heroicons/react/24/outline';
-import clsx from 'clsx';
-import Image from 'next/image';
-import { lusitana } from '@/app/ui/fonts';
-import { fetchLatestInvoices } from '@/app/lib/data';
+import { ArrowPathIcon } from "@heroicons/react/24/outline"
+import clsx from "clsx"
+import Image from "next/image"
+import { lusitana } from "@/app/ui/fonts"
+import { fetchLatestInvoices } from "@/app/lib/data"
 
 export default async function LatestInvoices() {
-  const latestInvoices = await fetchLatestInvoices();
+  const latestInvoices = await fetchLatestInvoices()
 
   return (
     <div className="flex w-full flex-col md:col-span-4 lg:col-span-4">
@@ -19,15 +19,15 @@ export default async function LatestInvoices() {
               <div
                 key={invoice.id}
                 className={clsx(
-                  'flex flex-row items-center justify-between py-4',
+                  "flex flex-row items-center justify-between py-4",
                   {
-                    'border-t': i !== 0,
-                  },
+                    "border-t": i !== 0,
+                  }
                 )}
               >
                 <div className="flex items-center">
                   <Image
-                    src={"http://localhost:1337" + invoice.customer.image.url}
+                    src={"http://127.0.0.1:1337" + invoice.customer.image.url}
                     className="mr-4 rounded-full"
                     width={32}
                     height={32}
@@ -47,7 +47,7 @@ export default async function LatestInvoices() {
                   {invoice.amount}
                 </p>
               </div>
-            );
+            )
           })}
         </div>
         <div className="flex items-center pb-2 pt-6">
@@ -56,5 +56,5 @@ export default async function LatestInvoices() {
         </div>
       </div>
     </div>
-  );
+  )
 }

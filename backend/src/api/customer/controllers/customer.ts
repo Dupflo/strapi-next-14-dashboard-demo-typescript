@@ -4,9 +4,9 @@
  * customer controller
  */
 
-const { createCoreController } = require('@strapi/strapi').factories;
+import { factories } from "@strapi/strapi";
 
-module.exports = createCoreController('api::customer.customer', ({ strapi }) => ({
+export default factories.createCoreController('api::customer.customer', ({ strapi }) => ({
   async totalCustomers(ctx) {
     try {
       const count = await strapi.db.query('api::customer.customer').count();

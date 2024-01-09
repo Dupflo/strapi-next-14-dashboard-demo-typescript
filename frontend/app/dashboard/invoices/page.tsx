@@ -1,24 +1,27 @@
-import { fetchFilteredInvoices } from "@/app/lib/data";
-import Pagination from "@/app/ui/invoices/pagination";
-import Search from "@/app/ui/search";
-import Table from "@/app/ui/invoices/table";
-import { CreateInvoice } from "@/app/ui/invoices/buttons";
-import { lusitana } from "@/app/ui/fonts";
-import { InvoicesTableSkeleton } from "@/app/ui/dashboard/skeletons";
-import { Suspense } from "react";
+import { fetchFilteredInvoices } from "@/app/lib/data"
+import Pagination from "@/app/ui/invoices/pagination"
+import Search from "@/app/ui/search"
+import Table from "@/app/ui/invoices/table"
+import { CreateInvoice } from "@/app/ui/invoices/buttons"
+import { lusitana } from "@/app/ui/fonts"
+import { InvoicesTableSkeleton } from "@/app/ui/dashboard/skeletons"
+import { Suspense } from "react"
 
 export default async function Page({
   searchParams,
 }: {
   searchParams?: {
-    query?: string;
-    page?: string;
-  };
+    query?: string
+    page?: string
+  }
 }) {
-  const query = searchParams?.query || "";
-  const currentPage = Number(searchParams?.page) || 1;
+  const query = searchParams?.query || undefined
+  const currentPage = Number(searchParams?.page) || 1
 
-  const { data: invoices , meta } = await fetchFilteredInvoices(query, currentPage);
+  const { data: invoices, meta } = await fetchFilteredInvoices(
+    query,
+    currentPage
+  )
   return (
     <div className="w-full">
       <div className="flex w-full items-center justify-between">
@@ -35,5 +38,5 @@ export default async function Page({
         {<Pagination totalPages={meta.pagination.pageCount} />}
       </div>
     </div>
-  );
+  )
 }

@@ -1,13 +1,13 @@
-import Image from "next/image";
-import { UpdateInvoice, DeleteInvoice } from "@/app/ui/invoices/buttons";
-import InvoiceStatus from "@/app/ui/invoices/status";
-import { formatDateToLocal, formatCurrency } from "@/app/lib/utils";
+import Image from "next/image"
+import { UpdateInvoice, DeleteInvoice } from "@/app/ui/invoices/buttons"
+import InvoiceStatus from "@/app/ui/invoices/status"
+import { formatDateToLocal, formatCurrency } from "@/app/lib/utils"
 
 export default async function InvoicesTable({
   invoices,
 }: {
-  currentPage: number;
-  invoices: object[];
+  currentPage: number
+  invoices: object[]
 }) {
   return (
     <div className="mt-6 flow-root">
@@ -25,7 +25,7 @@ export default async function InvoicesTable({
                       <div className="mb-2 flex items-center">
                         <Image
                           src={
-                            "http://localhost:1337" + invoice.customer.image.url
+                            "http://127.0.0.1:1337" + invoice.customer.image.url
                           }
                           className="mr-2 rounded-full"
                           width={28}
@@ -52,7 +52,7 @@ export default async function InvoicesTable({
                     </div>
                   </div>
                 </div>
-              );
+              )
             })}
           </div>
           <table className="hidden min-w-full text-gray-900 md:table">
@@ -88,7 +88,7 @@ export default async function InvoicesTable({
                     <div className="flex items-center gap-3">
                       <Image
                         src={
-                          "http://localhost:1337" + invoice.customer.image.url
+                          "http://127.0.0.1:1337" + invoice.customer.image.url
                         }
                         className="rounded-full"
                         width={28}
@@ -123,5 +123,5 @@ export default async function InvoicesTable({
         </div>
       </div>
     </div>
-  );
+  )
 }
